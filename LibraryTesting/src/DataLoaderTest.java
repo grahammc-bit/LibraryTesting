@@ -2,16 +2,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class DataLoaderTest {
 	private Users users = Users.getInstance();
 	private ArrayList<User> userList = users.getUsers();
 	
-	@Before
+	@BeforeEach
 	public void setup() {
 		userList.clear();
 		userList.add(new User("Amy", "Smith", "asmith", 19, "803-454-3344"));
@@ -19,9 +18,9 @@ class DataLoaderTest {
 		DataWriter.saveUsers();
 	}
 	
-	@After
+	@AfterEach
 	public void tearDown() {
-		userList.clear();
+		Users.getInstance().getUsers().clear();
 		DataWriter.saveUsers();
 	}
 	
