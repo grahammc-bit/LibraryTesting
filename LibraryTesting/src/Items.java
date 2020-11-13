@@ -5,7 +5,7 @@ public class Items {
 	private ArrayList<Item> itemList;
 	
 	private Items() {
-		itemList = Database.getItems();
+		itemList = DataLoader.getItems();
 	}
 	
 	public static Items getInstance() {

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class DataLoaderTest {
+class UsersTest {
 	private Users users = Users.getInstance();
 	private ArrayList<User> userList = users.getUsers();
 	
@@ -26,21 +26,32 @@ class DataLoaderTest {
 	
 	
 	@Test
-	void testGetUsersSize() {
-		userList = DataLoader.getUsers();
-		assertEquals(2, userList.size());
-	}
-
-	@Test
-	void testGetUsersSizeZero() {
-		Users.getInstance().getUsers().clear();
-		DataWriter.saveUsers();
-		assertEquals(0, userList.size());
+	void testHaveUserValidFirstItem() {
+		boolean hasAmy = users.haveUser("asmith");
+		assertTrue(hasAmy);
 	}
 	
 	@Test
-	void testGetUserFirstUserName() {
-		userList = DataLoader.getUsers();
-		assertEquals("asmith", userList.get(0).getUserName());
+	void testHaveUserValidLastItem() {
+		boolean hasBob = users.haveUser("bwhite");
+		assertTrue(hasBob);
+	}
+	
+	@Test
+	void testHaveUserInValid() {
+		boolean hasJoe = users.haveUser("jsmith");
+		assertFalse(hasJoe);
+	}
+	
+	@Test
+	void testHaveUserEmpty() {
+		boolean hasEmpty = users.haveUser("");
+		assertFalse(hasEmpty);
+	}
+	
+	@Test
+	void testHaveUserNull() {
+		boolean hasNull = users.haveUser(null);
+		assertFalse(hasNull);
 	}
 }

@@ -12,7 +12,7 @@ public class DataWriter extends DataConstants {
 		Users users = Users.getInstance();
 		ArrayList<User> userList = users.getUsers();
 		JSONArray jsonUsers = new JSONArray();
-		
+
 		//creating all the json objects
 		for(int i=0; i< userList.size(); i++) {
 			jsonUsers.add(getUserJSON(userList.get(i)));

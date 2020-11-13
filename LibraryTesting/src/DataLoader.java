@@ -37,4 +37,8 @@ public class DataLoader extends DataConstants{
 		
 		return null;
 	}
+	
+	public static ArrayList<Item> getItems() {
+		return new ArrayList<Item>();
+	}
 }
